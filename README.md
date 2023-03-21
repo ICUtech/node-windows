@@ -3,27 +3,31 @@
 ![NPM version](https://img.shields.io/npm/v/node-windows?label=node-windows&logo=npm&style=for-the-badge)
 ![NGN Dependencies](https://img.shields.io/librariesio/release/npm/node-windows?style=for-the-badge)
 
-[Tweet me (@goldglovecb)](http://twitter.com/goldglovecb) if you need me.
-
----
-
-**Sponsors (as of 2020)**
-
-<table cellpadding="10" cellspacing="0" border="0">
-  <tr>
-    <td><a href="https://metadoc.io"><img src="https://github.com/coreybutler/staticassets/raw/master/sponsors/metadoclogobig.png" width="200px"/></a></td>
-    <td><a href="https://butlerlogic.com"><img src="https://github.com/coreybutler/staticassets/raw/master/sponsors/butlerlogic_logo.png" width="200px"/></a></td>
-  </tr>
-</table>
-
----
-
-# node-windows
-
-  This library can be used to install/start/stop/uninstall Node scripts as Windows background services for **production** environments. This is not a tool for developing applications, it is a tool for releasing them. 
+ This library can be used to install/start/stop/uninstall Node scripts as Windows background services for **production** environments. This is not a tool for developing applications, it is a tool for releasing them. 
 
   See [node-mac](http://github.com/coreybutler/node-mac) and [node-linux](http://github.com/coreybutler/node-linux) if you need to support those operating systems.
+    
+[Tweet me (@goldglovecb)](http://twitter.com/goldglovecb) if you need me.
 
+## Sponsors
+<br/>
+<div>
+  <table cellpadding="5" cellspacing="0" border="0">
+    <tr>
+      <td><a href="https://metadoc.io"><img src="https://github.com/coreybutler/staticassets/raw/master/sponsors/metadoclogobig.png" width="200px"/></a></td>
+      <td><a href="https://enabledb.com"><img src="https://github.com/coreybutler/staticassets/raw/master/images/logos/logo_enabledb_w_text.png" width="200px"/></a></td>
+      <td><a href="https://butlerlogic.com"><img src="https://github.com/coreybutler/staticassets/raw/master/sponsors/butlerlogic_logo.png" width="200px"/></a></td>
+      <td width="25%" align="center"><a href="https://github.com/microsoft"><img src="https://user-images.githubusercontent.com/770982/195955265-5c3dca78-7140-4ec6-b05a-f308518643ee.png" height="30px"/></a></td>
+    </tr>
+    <tr>
+      <td colspan="4" align="center">
+        <a href="https://github.com/sponsors/coreybutler"><img src="https://img.shields.io/github/sponsors/coreybutler?label=Individual%20Sponsors&logo=github&style=social"/></a>
+        &nbsp;<a href="https://github.com/sponsors/coreybutler"><img src="https://img.shields.io/badge/-Become%20a%20Sponsor-yellow"/></a>
+      </td>
+    </tr>
+  </table>
+</div>
+<br/>
 
 ## Overview
 
@@ -233,6 +237,19 @@ var svc = new Service({
 
 svc.sudo.password = 'password';
 ...
+```
+
+### Depending on other services
+
+The service can also be made dependant on other Windows services.
+
+```js
+var svc = new Service({
+  name:'Hello World',
+  description: 'The nodejs.org example web server.',
+  script: 'C:\\path\\to\\helloworld.js',
+  dependsOn: ["serviceA"]
+});
 ```
 
 ### Cleaning Up: Uninstall a Service
@@ -485,7 +502,7 @@ output on a Windows 8 computer.
 }]
 ```
 
-The regualar (non-verbose) output typically provides the `ImageName`,`PID`,`SessionName`,
+The regular (non-verbose) output typically provides the `ImageName`,`PID`,`SessionName`,
 `Session#`, `MemUsage`, and `CPUTime`.
 
 ## kill
